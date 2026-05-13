@@ -1,1 +1,0 @@
-{"root":["./vite.config.ts","./netlify/functions/_github.ts","./netlify/functions/get-submissions.ts","./netlify/functions/submit.ts","./netlify/functions/update-hours.ts"],"version":"5.9.3"}
