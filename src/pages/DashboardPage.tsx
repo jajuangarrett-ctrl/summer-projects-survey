@@ -222,30 +222,83 @@ export function DashboardPage() {
   const [adminToken, setAdminToken] = useState(
     () => localStorage.getItem("adminToken") ?? "",
   );
-  const [tokenInput, setTokenInput] = useState(adminToken);
+  const [tokenInput, setTokenInput] = useState("");
+  const [authed, setAuthed] = useState(false);
+  const [authChecking, setAuthChecking] = useState(true);
+  const [signInError, setSignInError] = useState<string | null>(null);
+  const [signingIn, setSigningIn] = useState(false);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [savingId, setSavingId] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [tab, setTab] = useState<TabKey>("all");
 
-  const load = async () => {
+  const load = async (token: string) => {
     setLoading(true);
     setError(null);
     try {
-      const list = await fetchSubmissions();
+      const list = await fetchSubmissions(token);
       setSubmissions(list);
+      return true;
     } catch (e) {
+      const status = (e as { status?: number }).status;
+      if (status === 401) {
+        setAuthed(false);
+        setAdminToken("");
+        localStorage.removeItem("adminToken");
+        return false;
+      }
       setError(e instanceof Error ? e.message : "Failed to load");
+      return true;
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    void load();
+    (async () => {
+      if (!adminToken) {
+        setAuthChecking(false);
+        return;
+      }
+      const ok = await load(adminToken);
+      setAuthed(ok);
+      setAuthChecking(false);
+    })();
   }, []);
+
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSigningIn(true);
+    setSignInError(null);
+    try {
+      const list = await fetchSubmissions(tokenInput);
+      setSubmissions(list);
+      setAdminToken(tokenInput);
+      localStorage.setItem("adminToken", tokenInput);
+      setAuthed(true);
+      setTokenInput("");
+    } catch (e) {
+      const status = (e as { status?: number }).status;
+      setSignInError(
+        status === 401
+          ? "Incorrect password."
+          : e instanceof Error
+            ? e.message
+            : "Sign-in failed",
+      );
+    } finally {
+      setSigningIn(false);
+    }
+  };
+
+  const handleSignOut = () => {
+    setAuthed(false);
+    setAdminToken("");
+    setSubmissions([]);
+    localStorage.removeItem("adminToken");
+  };
 
   const allocatedByDept = useMemo(() => {
     const out: Record<Department, number> = { calworks: 0, sss: 0 };
@@ -258,10 +311,6 @@ export function DashboardPage() {
   const totalAllocated = allocatedByDept.calworks + allocatedByDept.sss;
 
   const handleChange = async (id: string, value: string) => {
-    if (!adminToken) {
-      setError("Enter the admin token to adjust hours.");
-      return;
-    }
     const hpw = Number(value) as HoursPerWeek;
     setSavingId(id);
     setError(null);
@@ -279,16 +328,7 @@ export function DashboardPage() {
     }
   };
 
-  const saveToken = () => {
-    setAdminToken(tokenInput);
-    localStorage.setItem("adminToken", tokenInput);
-  };
-
   const handleDelete = async (s: Submission) => {
-    if (!adminToken) {
-      setError("Enter the admin token to delete submissions.");
-      return;
-    }
     const ok = window.confirm(
       `Delete the proposal "${s.projectTitle}" from ${s.counselorName}? This commits a removal to the repo and cannot be undone from the dashboard.`,
     );
@@ -320,6 +360,65 @@ export function DashboardPage() {
     })),
   ];
 
+  if (authChecking) {
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+      </main>
+    );
+  }
+
+  if (!authed) {
+    return (
+      <main className="min-h-screen flex items-center justify-center p-6">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>Dashboard sign-in</CardTitle>
+            <CardDescription>
+              This dashboard is restricted. Enter the dashboard password to
+              view and manage submissions.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSignIn} className="space-y-4">
+              <div className="space-y-1">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  autoFocus
+                  value={tokenInput}
+                  onChange={(e) => setTokenInput(e.target.value)}
+                />
+              </div>
+              {signInError && (
+                <p className="text-sm text-destructive" role="alert">
+                  {signInError}
+                </p>
+              )}
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={signingIn || !tokenInput}
+              >
+                {signingIn ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  "Sign in"
+                )}
+              </Button>
+              <p className="text-xs text-muted-foreground text-center">
+                <Link to="/" className="underline">
+                  Back to the survey form
+                </Link>
+              </p>
+            </form>
+          </CardContent>
+        </Card>
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen py-10 px-4">
       <div className="max-w-6xl mx-auto space-y-6">
@@ -333,40 +432,26 @@ export function DashboardPage() {
               summer budget.
             </p>
           </div>
-          <Link to="/">
-            <Button variant="outline">Open survey form</Button>
-          </Link>
-        </header>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-base">Admin access</CardTitle>
-            <CardDescription>
-              Enter the admin token to adjust hours. Stored locally in this
-              browser.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-wrap items-end gap-3">
-            <div className="space-y-1 flex-1 min-w-[240px]">
-              <Label htmlFor="token">Admin token</Label>
-              <Input
-                id="token"
-                type="password"
-                value={tokenInput}
-                onChange={(e) => setTokenInput(e.target.value)}
-                placeholder="paste admin token"
-              />
-            </div>
-            <Button onClick={saveToken}>Save token</Button>
-            <Button variant="outline" onClick={load} disabled={loading}>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={() => load(adminToken)}
+              disabled={loading}
+            >
               {loading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
                 "Refresh"
               )}
             </Button>
-          </CardContent>
-        </Card>
+            <Link to="/">
+              <Button variant="outline">Survey form</Button>
+            </Link>
+            <Button variant="ghost" onClick={handleSignOut}>
+              Sign out
+            </Button>
+          </div>
+        </header>
 
         {error && (
           <Card className="border-destructive/60 bg-destructive/5">

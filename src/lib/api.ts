@@ -2,8 +2,17 @@ import type { Submission, HoursPerWeek } from "@/lib/utils";
 
 const BASE = "/api";
 
-export async function fetchSubmissions(): Promise<Submission[]> {
-  const r = await fetch(`${BASE}/get-submissions`);
+export async function fetchSubmissions(
+  adminToken: string,
+): Promise<Submission[]> {
+  const r = await fetch(`${BASE}/get-submissions`, {
+    headers: { "x-admin-token": adminToken },
+  });
+  if (r.status === 401) {
+    const err = new Error("Unauthorized") as Error & { status?: number };
+    err.status = 401;
+    throw err;
+  }
   if (!r.ok) throw new Error(`Failed to load submissions (${r.status})`);
   const data = await r.json();
   return data.submissions ?? [];
