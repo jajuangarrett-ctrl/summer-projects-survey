@@ -1,16 +1,3 @@
 {
-  "submissions": [
-    {
-      "id": "506a06cb-853d-47a5-8dc0-094843b78283",
-      "timestamp": "2026-05-13T21:38:28.114Z",
-      "department": "calworks",
-      "counselorName": "a",
-      "projectTitle": "a",
-      "projectDescription": "a",
-      "measurableOutcomes": "a",
-      "extendsAcademicYear": false,
-      "continuedBy": null,
-      "hoursPerWeek": 3
-    }
-  ]
+  "submissions": []
 }
