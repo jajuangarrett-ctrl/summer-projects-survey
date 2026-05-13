@@ -23,8 +23,8 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import { AlertTriangle, Loader2 } from "lucide-react";
-import { fetchSubmissions, updateHours } from "@/lib/api";
+import { AlertTriangle, Loader2, Trash2 } from "lucide-react";
+import { deleteSubmission, fetchSubmissions, updateHours } from "@/lib/api";
 import {
   DEPARTMENTS,
   DEPARTMENT_CAPS,
@@ -107,12 +107,16 @@ function SubmissionsTable({
   rows,
   showDepartment,
   onChangeHours,
+  onDelete,
   savingId,
+  deletingId,
 }: {
   rows: Submission[];
   showDepartment: boolean;
   onChangeHours: (id: string, v: string) => void;
+  onDelete: (s: Submission) => void;
   savingId: string | null;
+  deletingId: string | null;
 }) {
   if (rows.length === 0) {
     return <p className="text-sm text-muted-foreground">No submissions yet.</p>;
@@ -131,6 +135,9 @@ function SubmissionsTable({
             <th className="py-2 pr-3 font-medium">Extends AY</th>
             <th className="py-2 pr-3 font-medium">Hrs/wk</th>
             <th className="py-2 pr-3 font-medium text-right">Total</th>
+            <th className="py-2 pl-3 font-medium text-right">
+              <span className="sr-only">Actions</span>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -188,6 +195,21 @@ function SubmissionsTable({
               <td className="py-3 pr-3 text-right tabular-nums font-medium">
                 {totalHours(s.hoursPerWeek)}
               </td>
+              <td className="py-3 pl-3 text-right">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label={`Delete submission from ${s.counselorName}`}
+                  disabled={deletingId === s.id}
+                  onClick={() => onDelete(s)}
+                >
+                  {deletingId === s.id ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Trash2 className="h-4 w-4 text-destructive" />
+                  )}
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -205,6 +227,7 @@ export function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [savingId, setSavingId] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
   const [tab, setTab] = useState<TabKey>("all");
 
   const load = async () => {
@@ -259,6 +282,29 @@ export function DashboardPage() {
   const saveToken = () => {
     setAdminToken(tokenInput);
     localStorage.setItem("adminToken", tokenInput);
+  };
+
+  const handleDelete = async (s: Submission) => {
+    if (!adminToken) {
+      setError("Enter the admin token to delete submissions.");
+      return;
+    }
+    const ok = window.confirm(
+      `Delete the proposal "${s.projectTitle}" from ${s.counselorName}? This commits a removal to the repo and cannot be undone from the dashboard.`,
+    );
+    if (!ok) return;
+    setDeletingId(s.id);
+    setError(null);
+    const prev = submissions;
+    setSubmissions((list) => list.filter((x) => x.id !== s.id));
+    try {
+      await deleteSubmission(s.id, adminToken);
+    } catch (e) {
+      setSubmissions(prev);
+      setError(e instanceof Error ? e.message : "Delete failed");
+    } finally {
+      setDeletingId(null);
+    }
   };
 
   const allBudgetRows: BudgetRow[] = [
@@ -363,7 +409,9 @@ export function DashboardPage() {
                     rows={submissions}
                     showDepartment
                     onChangeHours={handleChange}
+                    onDelete={handleDelete}
                     savingId={savingId}
+                    deletingId={deletingId}
                   />
                 )}
               </CardContent>
@@ -396,7 +444,9 @@ export function DashboardPage() {
                         rows={deptRows}
                         showDepartment={false}
                         onChangeHours={handleChange}
+                        onDelete={handleDelete}
                         savingId={savingId}
+                        deletingId={deletingId}
                       />
                     )}
                   </CardContent>

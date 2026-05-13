@@ -37,3 +37,18 @@ export async function updateHours(
   if (!r.ok) throw new Error(`Update failed (${r.status})`);
   return r.json();
 }
+
+export async function deleteSubmission(
+  id: string,
+  adminToken: string,
+): Promise<void> {
+  const r = await fetch(`${BASE}/delete-submission`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-admin-token": adminToken,
+    },
+    body: JSON.stringify({ id }),
+  });
+  if (!r.ok) throw new Error(`Delete failed (${r.status})`);
+}
