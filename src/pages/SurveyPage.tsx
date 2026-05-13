@@ -12,12 +12,25 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { CheckCircle2 } from "lucide-react";
 import { createSubmission } from "@/lib/api";
-import { totalHours, type HoursPerWeek } from "@/lib/utils";
+import {
+  DEPARTMENTS,
+  totalHours,
+  type Department,
+  type HoursPerWeek,
+} from "@/lib/utils";
 
 export function SurveyPage() {
+  const [department, setDepartment] = useState<Department | "">("");
   const [counselorName, setCounselorName] = useState("");
   const [projectTitle, setProjectTitle] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
@@ -31,10 +44,15 @@ export function SurveyPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!department) {
+      setError("Please select a department.");
+      return;
+    }
     setError(null);
     setSubmitting(true);
     try {
       await createSubmission({
+        department,
         counselorName: counselorName.trim(),
         projectTitle: projectTitle.trim(),
         projectDescription: projectDescription.trim(),
@@ -69,6 +87,7 @@ export function SurveyPage() {
               variant="outline"
               onClick={() => {
                 setSuccess(false);
+                setDepartment("");
                 setCounselorName("");
                 setProjectTitle("");
                 setProjectDescription("");
@@ -131,6 +150,25 @@ export function SurveyPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-5">
+              <div className="space-y-2">
+                <Label htmlFor="department">Department</Label>
+                <Select
+                  value={department}
+                  onValueChange={(v) => setDepartment(v as Department)}
+                >
+                  <SelectTrigger id="department">
+                    <SelectValue placeholder="Select your department" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {DEPARTMENTS.map((d) => (
+                      <SelectItem key={d.value} value={d.value}>
+                        {d.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
               <div className="space-y-2">
                 <Label htmlFor="counselorName">Counselor name</Label>
                 <Input

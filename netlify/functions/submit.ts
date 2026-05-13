@@ -32,6 +32,11 @@ export const handler: Handler = async (event) => {
         error: "hoursPerWeek must be 3, 4, or 5",
       });
     }
+    if (body.department !== "calworks" && body.department !== "sss") {
+      return jsonResponse(400, {
+        error: "department must be 'calworks' or 'sss'",
+      });
+    }
     const extendsAcademicYear = Boolean(body.extendsAcademicYear);
     let continuedBy: Submission["continuedBy"] = null;
     if (extendsAcademicYear) {
@@ -48,6 +53,7 @@ export const handler: Handler = async (event) => {
         globalThis.crypto?.randomUUID?.() ??
         `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`,
       timestamp: new Date().toISOString(),
+      department: body.department,
       counselorName: String(body.counselorName).trim(),
       projectTitle: String(body.projectTitle).trim(),
       projectDescription: String(body.projectDescription).trim(),
@@ -62,7 +68,7 @@ export const handler: Handler = async (event) => {
     await writeSubmissions(
       submissions,
       sha,
-      `survey: add submission from ${submission.counselorName}`,
+      `survey: add ${submission.department} submission from ${submission.counselorName}`,
     );
 
     return jsonResponse(201, submission);

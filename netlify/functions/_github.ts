@@ -18,9 +18,12 @@ const BRANCH = () => envOptional("GITHUB_BRANCH", "main");
 const DATA_PATH = () => envOptional("DATA_PATH", "data/submissions.json");
 const TOKEN = () => env("GITHUB_TOKEN");
 
+export type Department = "calworks" | "sss";
+
 export interface Submission {
   id: string;
   timestamp: string;
+  department: Department;
   counselorName: string;
   projectTitle: string;
   projectDescription: string;
