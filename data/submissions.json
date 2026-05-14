@@ -1,3 +1,16 @@
 {
-  "submissions": []
+  "submissions": [
+    {
+      "id": "7e8a9406-cd80-45a8-a5b2-07defff77bc2",
+      "timestamp": "2026-05-14T01:04:23.017Z",
+      "department": "calworks",
+      "counselorName": "Belle Ayala and Yasmine Mena",
+      "projectTitle": "Student Engagement Series of Events for Fall 2026- Cafecito with the Counselor",
+      "projectDescription": "Action Plan: \"Cafecito with the Counselor\"-  ENGAGEMENT EVENTS SERIES\nObjective: To increase CalWORKs student belonging and persistence through informal, high-touch community building.\nThe implementation of student engagement events will further support our CalWORKs students and increase their sense of belonging on campus. I would like to propose launching a monthly \"Cafecito with the Counselor\" event. \nThe goal of this initiative is to provide an informal, welcoming space where students can drop in, ask quick questions, and build community with one another. I believe this \"high-touch\" approach will improve student rapport and help us identify potential barriers to their success earlier in the semester.\nTraditional 30-minute appointments may feel formal or intimidating for students navigating high-stress transitions. When students develop a sense of belonging, counselors and students together can further identify academic or personal barriers.\nBy establishing a \"high-touch,\" informal community space, this action plan directly addresses SDCCE’s Equity priorities and Counseling priorities. This approach mirrors the \"Community Building Events\" and \"Goal-Oriented Counseling\" strategies recommended by the Counselor Institute to boost morale and persistence",
+      "measurableOutcomes": "Effectiveness will be measured through both qualitative and quantitative data:\nAttendance Tracking: Using SARS and a spreadsheet to track \"in-reach\" and \"outreach\" efficiency.\nStudent Feedback: Surveys focusing on \"sense of belonging\" and \"preferred contact methods\".\nGap Analysis: Comparing survey data against current formal structures to see if \"high-touch\" needs are being met.\n*focus group",
+      "extendsAcademicYear": true,
+      "continuedBy": "same",
+      "hoursPerWeek": 4
+    }
+  ]
 }
