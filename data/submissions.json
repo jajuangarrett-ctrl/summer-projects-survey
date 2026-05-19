@@ -11,6 +11,18 @@
       "extendsAcademicYear": true,
       "continuedBy": "same",
       "hoursPerWeek": 4
+    },
+    {
+      "id": "3c5ffea9-3423-4aa2-9f03-acdf307eb804",
+      "timestamp": "2026-05-19T20:12:58.925Z",
+      "department": "sss",
+      "counselorName": "Francheska Morataya",
+      "projectTitle": "Comprehensive LGBTQIA+ Program Plan",
+      "projectDescription": "My goal is to develop a cohesive, data-informed LGBTQIA+ student support framework that strengthens outreach, improves service coordination, enhances belonging, and updates the program identity across SDCCE. This project integrates four core components:\n\nOutreach & Services Roadmap\nWarm Handoff & Referral System\nStudent Needs & Trends Data Dashboard\nProgram Title Review & Renaming Process",
+      "measurableOutcomes": "1. Outreach & Services Roadmap (Fall + Spring)\nGoal: Build a structured, semester-long plan that increases visibility, access, and engagement for LGBTQIA+ students by the beginning of fall semester. \nDeliverables:\n- Outreach calendar\n- Messaging templates\n- Workshop/event plan\n- Community partner directory\n\n2. Warm Handoff & Referral System\nGoal: Reduce student drop-off between referral → service by creating a consistent, trauma-informed process by fall semester.\nDeliverables:\n- Referral workflow map\n- Warm handoff protocol\n- Staff quick guide\n\n3. Student Needs & Trends Data Dashboard\nGoal: Use real data to guide programming, outreach, and resource allocation by fall semester.\nDeliverables:\n- Document summarizing key trends\n- Recommendations for programming for 26-27\n\n4. Program Title Review & Renaming Process\nGoal: Evaluate whether the current “LGBTQIA+ Program” title should be updated to a name that is more accessible, memorable, and reflective of student identity and community culture. By fall semester. \n\nDeliverables\n- A brief student feedback survey (digital + in-person)\n- Focus group or listening session notes (optional)\n- Analysis of naming trends across CCCs and universities\n- A shortlist of 2–4 recommended program names",
+      "extendsAcademicYear": false,
+      "continuedBy": null,
+      "hoursPerWeek": 4
     }
   ]
 }
