@@ -47,6 +47,18 @@
       "extendsAcademicYear": false,
       "continuedBy": null,
       "hoursPerWeek": 3
+    },
+    {
+      "id": "b15b0db2-e830-44d6-96bc-5a1d0ab89a70",
+      "timestamp": "2026-05-20T18:30:55.807Z",
+      "department": "sss",
+      "counselorName": "Lizbeth Alvarez Leyva",
+      "projectTitle": "Updating ElevateU program",
+      "projectDescription": "Updating flyers, Website, SARS CODES, intake form, and updating student information.",
+      "measurableOutcomes": "Smooth transition for the Fall semester for all incoming students.",
+      "extendsAcademicYear": false,
+      "continuedBy": null,
+      "hoursPerWeek": 3
     }
   ]
 }
