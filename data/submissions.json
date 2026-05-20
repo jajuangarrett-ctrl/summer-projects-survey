@@ -35,6 +35,18 @@
       "extendsAcademicYear": false,
       "continuedBy": null,
       "hoursPerWeek": 4
+    },
+    {
+      "id": "00c565aa-7b21-41ff-ac45-5d9a5065770a",
+      "timestamp": "2026-05-20T18:16:37.525Z",
+      "department": "sss",
+      "counselorName": "Lizbeth Alvarez Leyva",
+      "projectTitle": "Workshops",
+      "projectDescription": "Will work on upcoming Fall Workshops and collaborate with other programs such as ISSP, LGBTQIA+, and Black Student Success.",
+      "measurableOutcomes": "Will benefit all our students since many are in other student support programs as well.",
+      "extendsAcademicYear": false,
+      "continuedBy": null,
+      "hoursPerWeek": 3
     }
   ]
 }
