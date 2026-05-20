@@ -23,6 +23,18 @@
       "extendsAcademicYear": false,
       "continuedBy": null,
       "hoursPerWeek": 4
+    },
+    {
+      "id": "5a07c531-e981-4fab-a98c-7839b1618216",
+      "timestamp": "2026-05-20T18:12:29.997Z",
+      "department": "sss",
+      "counselorName": "Lizbeth Alvarez Leyva",
+      "projectTitle": "Resources",
+      "projectDescription": "Will research free and low-cost community resources for our students. Will do a step-by-step page to learn how to access resources. Will also collaborate with other counselors as well.",
+      "measurableOutcomes": "This page will be posted in the SharePoint and Teams page, and all the student support services counselors will have access to it, and it will benefit our students.",
+      "extendsAcademicYear": false,
+      "continuedBy": null,
+      "hoursPerWeek": 4
     }
   ]
 }
