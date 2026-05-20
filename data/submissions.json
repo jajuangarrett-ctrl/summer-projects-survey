@@ -59,6 +59,18 @@
       "extendsAcademicYear": false,
       "continuedBy": null,
       "hoursPerWeek": 3
+    },
+    {
+      "id": "09903897-aa5b-4ad2-8a79-d47f93fe63fb",
+      "timestamp": "2026-05-20T19:21:18.687Z",
+      "department": "sss",
+      "counselorName": "Fatima Mota",
+      "projectTitle": "ISSP Canvas Page Development",
+      "projectDescription": "I would like to submit my proposal for a Summer Special Project in support of the Immigration Student Success Program (ISSP).\n\nThe proposed project would focus on the continued development and improvement of the ISSP Canvas page. The Canvas page currently requires modifications, updated information, and additional resource development to better support our students and college personnel.",
+      "measurableOutcomes": "Measurable outcomes for this project would include:\n•\tCompletion of updated Canvas modules and resource sections\n•\tIncreased accessibility to ISSP information and referrals\n•\tDevelopment of organized materials that may continue to support students and staff beyond the summer term\n\nDeliverables for this project would include:\n•\tUpdated and fully organized ISSP Canvas page\n•\tCreation and/or revision of student resource sections and informational modules\n•\tUpload and organization of referral information, legal resources, workshop flyers, and community partnerships\n•\tDevelopment of accessible support information for college personnel working with immigrant and mixed-status students\n•\tUpdated announcements and communication materials for future student engagement\n•\tReview and modification of page layout to improve accessibility and ease of use",
+      "extendsAcademicYear": false,
+      "continuedBy": null,
+      "hoursPerWeek": 3
     }
   ]
 }
