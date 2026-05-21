@@ -71,6 +71,18 @@
       "extendsAcademicYear": false,
       "continuedBy": null,
       "hoursPerWeek": 3
+    },
+    {
+      "id": "99965459-6f8c-4360-b492-14e4e40f2b59",
+      "timestamp": "2026-05-21T05:44:07.847Z",
+      "department": "calworks",
+      "counselorName": "Yasmine Mena",
+      "projectTitle": "Work Study Program Development",
+      "projectDescription": "The purpose of this project is to modernize and enhance the Work-Study program through the development of updated training resources, digital application processes, and improved student inquiry tracking systems. Current processes rely heavily on paper documentation and informal policy reference methods, which can create inconsistencies, inefficiencies, and barriers for both students and staff.\n\nThis initiative will focus on improving operational efficiency, strengthening policy consistency, increasing accessibility for students, and creating sustainable systems that support long-term program effectiveness.\n\nThe project will include the creation of a centralized Work-Study Training and Policy Manual, the redesign of the Work-Study application into a digital format, and the development of a digital inquiry and tracking system for prospective work-study students.",
+      "measurableOutcomes": "* Increase efficiency of application and intake processes\n* Improve consistency in staff communication regarding policies and procedures\n* Reduce reliance on paper documentation\n* Improve accessibility and ease of application submission for students\n* Strengthen organization and tracking of student inquiries and applications\n* Reduce time spent collecting preliminary student information during appointments\n* Improve staff ability to reference updated policies and procedures",
+      "extendsAcademicYear": true,
+      "continuedBy": "same",
+      "hoursPerWeek": 4
     }
   ]
 }
