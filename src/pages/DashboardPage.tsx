@@ -132,6 +132,7 @@ function SubmissionsTable({
             )}
             <th className="py-2 pr-3 font-medium">Counselor</th>
             <th className="py-2 pr-3 font-medium">Project</th>
+            <th className="py-2 pr-3 font-medium">Outcomes / deliverables</th>
             <th className="py-2 pr-3 font-medium">Extends AY</th>
             <th className="py-2 pr-3 font-medium">Hrs/wk</th>
             <th className="py-2 pr-3 font-medium text-right">Total</th>
@@ -152,10 +153,15 @@ function SubmissionsTable({
                 </td>
               )}
               <td className="py-3 pr-3 font-medium">{s.counselorName}</td>
-              <td className="py-3 pr-3 max-w-[360px]">
+              <td className="py-3 pr-3 min-w-[260px] max-w-[360px]">
                 <div className="font-medium">{s.projectTitle}</div>
                 <div className="text-xs text-muted-foreground line-clamp-2">
                   {s.projectDescription}
+                </div>
+              </td>
+              <td className="py-3 pr-3 min-w-[300px] max-w-[440px]">
+                <div className="text-xs leading-relaxed text-muted-foreground whitespace-pre-line line-clamp-5">
+                  {s.measurableOutcomes}
                 </div>
               </td>
               <td className="py-3 pr-3">
