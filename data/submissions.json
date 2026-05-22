@@ -83,6 +83,18 @@
       "extendsAcademicYear": true,
       "continuedBy": "same",
       "hoursPerWeek": 4
+    },
+    {
+      "id": "c12d49c4-a381-4226-a3db-dd639a13cc13",
+      "timestamp": "2026-05-22T17:03:54.845Z",
+      "department": "calworks",
+      "counselorName": "juan serrano",
+      "projectTitle": "Creation of Digital forms for CalWORKs Department",
+      "projectDescription": "SMART BASED PROJECT:\n\nSpecific-I plan to work with the team in creating the needed electronic forms for our CalWORKs department related to Intake, student check in, basic needs, work study intake/appraisal form, referral to other services provides\n\nMeasurable: The project will be assessed based on completion of each form and priority to special program operations.\n\nAttainable: This project may be extended to the fall semester if all forms are not completed during the summer semester.  There will be meetings scheduled with different stakeholders regarding the process in creating the forms\n\nRealistic:  Creating these forms will help us with our data collection processes, tracking of student services, and deliverables with MIS/VAR outcomes.  Management may find these forms useful when pulling data to assess program resources, operational needs, and services to our students.\n\nTime Based:  I will be tracking the progress and scheduling biweekly meeting with different stakeholders to ensure completion of each form",
+      "measurableOutcomes": "I submitted my responses in the project description box on this form",
+      "extendsAcademicYear": true,
+      "continuedBy": "same",
+      "hoursPerWeek": 4
     }
   ]
 }
