@@ -107,6 +107,18 @@
       "extendsAcademicYear": false,
       "continuedBy": null,
       "hoursPerWeek": 4
+    },
+    {
+      "id": "6adabdd0-5935-4c46-a1a8-04bf0b3c5c11",
+      "timestamp": "2026-05-27T02:52:47.690Z",
+      "department": "calworks",
+      "counselorName": "Angie Sanchez-Castillo",
+      "projectTitle": "Cafecito con Pan Events",
+      "projectDescription": "The Cafecito con Pan series is designed to create engaging events for CalWORKs students that foster meaningful connections with counselors and support staff who guide them throughout their academic journey. These events aim to strengthen relationships, increase awareness of available CalWORKs services, and ensure students are fully utilizing program resources before their eligibility period ends. Additionally, the series will provide students with valuable information about future academic pathways and career opportunities. By cultivating a welcoming and supportive environment, Cafecito con Pan encourages students to ask questions, build confidence, and develop a strong sense of community. With the support of additional hours, I would be able to collaborate more intentionally with fellow counselors involved in this project to develop, coordinate, and plan events in advance of the Fall semester. This proactive approach will allow us to deliver more structured, timely, and impactful programming rather than relying on last-minute planning.",
+      "measurableOutcomes": "The outcomes of this project would bring planned events being scheduled with dates, times, rooms, event set up as well as programming. To be able to provide events to Social Media Committee to promote and display through our Social Media Page.",
+      "extendsAcademicYear": false,
+      "continuedBy": null,
+      "hoursPerWeek": 4
     }
   ]
 }
