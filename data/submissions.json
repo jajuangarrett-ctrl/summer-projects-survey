@@ -131,6 +131,18 @@
       "extendsAcademicYear": false,
       "continuedBy": null,
       "hoursPerWeek": 4
+    },
+    {
+      "id": "93aed647-de50-4b18-b9bb-f1d6c2ef38ed",
+      "timestamp": "2026-05-27T03:06:44.197Z",
+      "department": "calworks",
+      "counselorName": "Angie Sanchez-Castillo",
+      "projectTitle": "Work Study Counselor",
+      "projectDescription": "I would like to propose taking on additional hours to support the growing number of CalWORKs Work Study students. With this increase, there is an opportunity to strengthen our Work Study program and provide more structured, consistent support. In collaboration with our current Work Study counselor, I would focus on establishing a clear process for students to meet with counselors, including reviewing eligibility, time limits, and participation expectations for both current and prospective students. Additionally, I would develop a semester-based timeline to regularly check in with students, ensuring they remain on track and are aware of available resources. This effort would also include incorporating career development support to help students connect their work study experience with their long-term academic and career goals. I believe these enhancements would improve student engagement, retention, and overall program effectiveness.",
+      "measurableOutcomes": "Established requirements to meet with work study counselor and timeline per semester for appointments with students. Review time limits for current work study students, review status of students who are looking to get hired or complete remaining paperwork. For new work study counselor to continue working with prospective work study counselor.",
+      "extendsAcademicYear": false,
+      "continuedBy": null,
+      "hoursPerWeek": 5
     }
   ]
 }
