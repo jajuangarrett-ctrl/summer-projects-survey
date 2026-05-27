@@ -95,6 +95,18 @@
       "extendsAcademicYear": true,
       "continuedBy": "same",
       "hoursPerWeek": 4
+    },
+    {
+      "id": "203a8779-27af-4fed-b3bc-05eb1d6258be",
+      "timestamp": "2026-05-27T02:44:30.797Z",
+      "department": "sss",
+      "counselorName": "Angie",
+      "projectTitle": "ISSP VARS",
+      "projectDescription": "As part of the VARS project for ISSP, I would focus on developing SARS codes that align with the established VARS categories and subcategories. Building on my experience working with ISSP, I have gained insight into the most commonly utilized student services within the center and would aim to create a data framework that accurately reflects these trends.\n\nIn addition, since ISSP plays a key role in supporting students with AB 540 and California Dream Act eligibility, this project would include coordinating meetings with Continuing Education data researchers. The goal of these meetings would be to better understand Chancellor’s Office data reporting requirements and to identify strategies for effectively capturing and demonstrating how Continuing Education serves Dreamers, AB 540, and undocumented student populations.",
+      "measurableOutcomes": "This project will develop and implement a full set of SARS codes aligned with VARS categories to accurately capture ISSP services, especially those most frequently used in the center, and improve the quality and completeness of utilization data. It will include collaborating with Continuing Education data staff to understand Chancellor’s Office reporting requirements, creating a clear data workflow and documentation that show how ISSP data will demonstrate service to Dreamers/AB 540/undocumented students, and producing the first pilot report. To continue growing to compile which demonstrates the much needed support ISSP needs.",
+      "extendsAcademicYear": false,
+      "continuedBy": null,
+      "hoursPerWeek": 4
     }
   ]
 }
