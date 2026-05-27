@@ -119,6 +119,18 @@
       "extendsAcademicYear": false,
       "continuedBy": null,
       "hoursPerWeek": 4
+    },
+    {
+      "id": "c0d2078d-b17d-444f-ad12-e346fb95127d",
+      "timestamp": "2026-05-27T02:59:30.380Z",
+      "department": "calworks",
+      "counselorName": "Angie Sanchez-Castillo",
+      "projectTitle": "Social Media Committee",
+      "projectDescription": "Complete PIO Training, meet with social media committee to submit account credentials, develop meeting schedule for Fall semester to review what will be posted on account, assign two members to post as instructed, develop future content by working with staff, faculty and events and engagement committee.",
+      "measurableOutcomes": "Complete PIO training, assign two members to post account, create calendar for Fall semester meetings. Promote CalWORKs program as well as demonstrate the work CE CalWORKs does.",
+      "extendsAcademicYear": false,
+      "continuedBy": null,
+      "hoursPerWeek": 4
     }
   ]
 }
