@@ -23,7 +23,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import { AlertTriangle, Loader2, Trash2 } from "lucide-react";
+import { AlertTriangle, Download, Loader2, Trash2 } from "lucide-react";
 import { deleteSubmission, fetchSubmissions, updateHours } from "@/lib/api";
 import {
   DEPARTMENTS,
@@ -42,6 +42,90 @@ interface BudgetRow {
   label: string;
   allocated: number;
   cap: number;
+}
+
+type ExcelCellValue = string | number | null | undefined;
+
+const excelCell = (value: ExcelCellValue) =>
+  String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/\n/g, "<br>");
+
+function localDateStamp(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function downloadSubmissionsExcel(submissions: Submission[]) {
+  const headers: string[] = [
+    "Submitted",
+    "Department",
+    "Counselor",
+    "Project title",
+    "Project description",
+    "Measurable outcomes / deliverables",
+    "Extends into academic year",
+    "Continued by",
+    "Hours per week",
+    "Total summer hours",
+  ];
+  const rows: ExcelCellValue[][] = submissions.map((s) => [
+    new Date(s.timestamp).toLocaleDateString(),
+    departmentLabel(s.department),
+    s.counselorName,
+    s.projectTitle,
+    s.projectDescription,
+    s.measurableOutcomes,
+    s.extendsAcademicYear ? "Yes" : "No",
+    s.extendsAcademicYear
+      ? s.continuedBy === "same"
+        ? "Same counselor"
+        : "To be reassigned"
+      : "",
+    s.hoursPerWeek,
+    totalHours(s.hoursPerWeek),
+  ]);
+  const headerHtml = headers
+    .map((header) => `<th>${excelCell(header)}</th>`)
+    .join("");
+  const rowsHtml = rows
+    .map((row) => {
+      const cells = row.map((cell) => `<td>${excelCell(cell)}</td>`).join("");
+      return `<tr>${cells}</tr>`;
+    })
+    .join("");
+  const html = `<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    table { border-collapse: collapse; font-family: Arial, sans-serif; font-size: 12px; }
+    th { background: #f3f4f6; font-weight: 700; }
+    th, td { border: 1px solid #d1d5db; padding: 8px; vertical-align: top; }
+  </style>
+</head>
+<body>
+  <table>
+    <thead><tr>${headerHtml}</tr></thead>
+    <tbody>${rowsHtml}</tbody>
+  </table>
+</body>
+</html>`;
+  const blob = new Blob([html], { type: "application/vnd.ms-excel" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  const today = localDateStamp(new Date());
+  link.href = url;
+  link.download = `summer-projects-submissions-${today}.xls`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
 }
 
 function BudgetCards({ rows }: { rows: BudgetRow[] }) {
@@ -439,6 +523,14 @@ export function DashboardPage() {
             </p>
           </div>
           <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={() => downloadSubmissionsExcel(submissions)}
+              disabled={loading || submissions.length === 0}
+            >
+              <Download className="h-4 w-4" />
+              Download Excel
+            </Button>
             <Button
               variant="outline"
               onClick={() => load(adminToken)}
