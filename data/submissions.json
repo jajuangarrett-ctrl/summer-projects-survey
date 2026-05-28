@@ -143,6 +143,18 @@
       "extendsAcademicYear": false,
       "continuedBy": null,
       "hoursPerWeek": 5
+    },
+    {
+      "id": "aa590388-67b2-421a-ad07-1b1220c26555",
+      "timestamp": "2026-05-28T01:24:34.329Z",
+      "department": "sss",
+      "counselorName": "Fatima Mota",
+      "projectTitle": "Alignment of SARS Reason Codes with District VARS Codes for the Immigration Student Success Program (ISSP)",
+      "projectDescription": "As the Counselor and Coordinator for the Immigration Student Success Program (ISSP), I would like to propose a summer special project focused on aligning SARS Reason Codes with the District VARS codes to better support, document, and capture student service data related to ISSP.\nThis project is important to ensure that services, interventions, workshops, referrals, and student support efforts provided through ISSP are accurately reflected and reported within district systems. Proper alignment of these codes will help improve data tracking, program assessment, reporting accuracy, and identification of student needs and outcomes.",
+      "measurableOutcomes": "Project Goals:\n•\tReview current SARS Reason Codes and District VARS codes related to ISSP services\n•\tIdentify gaps and inconsistencies in current data collection processes\n•\tDevelop recommendations and alignments for improved data tracking and reporting\n•\tSupport accurate documentation of student interventions, workshops, referrals, and support services provided through ISSP\n•\tStrengthen program evaluation and reporting capabilities for immigrant, undocumented, refugee, and mixed-status student populations\nDeliverables:\n•\tReview and analysis of current ISSP-related SARS and VARS coding practices\n•\tProposed alignment document and recommendations for appropriate coding categories\n•\tUpdated tracking framework for ISSP student support services and interventions\n•\tRecommendations for improving consistency in data entry and reporting practices\n•\tCollaboration and consultation with appropriate departments and personnel as needed\nMeasurable Outcomes:\n•\tCompletion of a comprehensive review of current coding systems related to ISSP\n•\tDevelopment of a proposed alignment structure between SARS and District VARS codes\n•\tIncreased ability to accurately capture and report ISSP student support data\n•\tImproved consistency and efficiency in documenting student services and interventions",
+      "extendsAcademicYear": true,
+      "continuedBy": "same",
+      "hoursPerWeek": 3
     }
   ]
 }
