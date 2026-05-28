@@ -155,6 +155,18 @@
       "extendsAcademicYear": true,
       "continuedBy": "same",
       "hoursPerWeek": 3
+    },
+    {
+      "id": "df4d0d51-1e7e-401f-b876-3377d622e087",
+      "timestamp": "2026-05-28T06:04:03.659Z",
+      "department": "calworks",
+      "counselorName": "Bojin Haji",
+      "projectTitle": "Community Resource Collection for CalWORKs Students",
+      "projectDescription": "Research and collect community and campus resources that can help CalWORKs students, including housing, food, childcare, transportation, mental health, jobs, emergency aid, and school support services. Organize the information into simple resource materials that can be shared with students and staff.",
+      "measurableOutcomes": "Create a list of community and campus resources for CalWORKs students\nOrganize resources by category\nAdd and update resource information during the summer\nCheck contact information and program details for accuracy\nCreate easy-to-use resource guides for students and staff",
+      "extendsAcademicYear": false,
+      "continuedBy": null,
+      "hoursPerWeek": 3
     }
   ]
 }
